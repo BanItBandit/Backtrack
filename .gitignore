@@ -1,0 +1,8 @@
+# VS Code settings
+.vscode/
+
+# Windows
+Thumbs.db
+
+# macOS
+.DS_Store
