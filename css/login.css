@@ -1,0 +1,216 @@
+/* ---------- 1. Variables ---------- */
+:root {
+  --bg: #171A21;
+  --surface: #292E39;
+  --text: #F3F4F6;
+  --violet: #7357E8;
+  --sky: #38BDF8;
+  --accent: #FF9A01;
+
+  --font-body: "Inter", sans-serif;
+  --font-heading: "Space Grotesk", sans-serif;
+  --font-brand: "Oxanium", sans-serif;
+}
+
+
+/* ---------- 2. Reset and base styles ---------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+}
+
+h1, h2 {
+  font-family: var(--font-heading);
+}
+
+button,
+input {
+  font: inherit;
+}
+
+a {
+  color: var(--sky);
+  text-decoration: none;
+}
+
+/* a:hover { */
+  /* text-decoration: underline; */
+/* } */
+
+
+/* ---------- 3. Page layout ---------- */
+.login-page {
+  display: grid;
+  grid-template-columns: minmax(300px, 520px) 1fr;
+  min-height: 100vh;
+  position: relative;   /* anchors .game-art */
+  overflow: hidden;     /* clips the art where it bleeds off the edges */
+}
+
+
+/* ---------- 4. Left column: wordmark + login card ---------- */
+.login-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 2rem;
+  padding-top: 6rem;
+  margin-left: 2rem;
+}
+
+.wordmark {
+  font-family: var(--font-brand);
+  font-size: 3rem;
+  font-style: italic;
+}
+
+.login-card {
+  background: var(--surface);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.25);
+  padding: 2rem;
+}
+
+.login-card h1,
+.login-card p {
+  text-align: center;
+}
+
+.login-card h1 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.login-card p {
+  font-size: 0.9rem;
+}
+
+.login-intro {
+  margin-bottom: 1rem;
+}
+
+.forgot-password {
+  margin-top: 1rem;
+}
+
+.divider {
+  margin: 1rem 0;   /* ? Nothing in this file draws the line under "or". Is there an <hr> in the HTML? */
+}
+
+
+/* ---------- 5. Form fields and buttons ---------- */
+.field input {
+  width: 100%;
+  background: var(--bg);
+  border: none;           /* CHECK: inputs have square corners, buttons have 4px. Intentional? */
+  color: var(--text);
+  margin-bottom: 1rem;
+}
+
+.button {
+  display: block;
+  width: 100%;
+  text-align: center;
+  text-decoration: none;
+  color: var(--text);
+  border: none;
+  cursor: pointer;
+}
+
+.field input,
+.button {
+  padding: 1rem;   /* roughly 56px tall with the font size */
+}
+
+.login-button {
+  background: var(--violet);
+}
+
+.create-account {
+  padding: 2rem 1rem;   /* the tall one. Has to stay below the shared rule above to win. */
+  background: var(--accent);
+}
+
+.login-button:hover {
+  background: var(--sky);
+}
+
+.create-account:hover {
+  background: var(--sky);
+}
+
+
+/* ---------- 6. Right column: blurb ---------- */
+.blurb {
+  align-self: start;
+  justify-self: center;
+  max-width: 480px;
+  margin-top: 4rem;
+  padding: 1.5rem;
+  background: var(--surface);
+  /* background: linear-gradient(to right, var(--surface), var(--background)); */
+  text-align: center;
+
+  position: relative;   /* needed so z-index works, keeps the blurb above the art */
+  z-index: 1;
+}
+
+.blurb h2 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.blurb p {
+  font-size: 0.9rem;
+}
+
+
+/* ---------- 7. Game art (animated background) ---------- */
+.game-art {
+  position: absolute;
+  top: -10%;
+  right: -10%;
+  width: 55%;
+  height: 120%;
+  display: flex;
+  gap: 1rem;
+  transform: rotate(8deg);
+  z-index: 0;
+}
+
+.column {
+  flex: 1;
+  overflow: hidden;   /* clips the track to the column */
+}
+
+.track {
+  animation: scroll 40s linear infinite;
+}
+
+.column:nth-child(even) .track {
+  animation-direction: reverse;   /* columns 2 and 4 go the other way */
+}
+
+.tile {
+  aspect-ratio: 1;
+  margin-bottom: 1rem;   /* spacing here instead of gap, so the loop point is exact */
+  background: var(--sky);
+}
+
+.tile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@keyframes scroll {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-50%); }
+}

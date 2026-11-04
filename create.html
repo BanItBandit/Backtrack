@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create an account - Backtrack</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Oxanium:wght@500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/login.css">
+  <script src="js/login.js" defer></script>
+</head>
+<body>
+
+  <div class="login-page">
+
+    <main class="login-main">
+      <header>
+        <p class="wordmark">Backtrack</p>
+      </header>
+
+      <section class="login-card">
+        <h1>Welcome!</h1>
+        <p class="login-intro">Please enter account creation details</p>
+
+        <form class="login-form" action="#" method="post">
+          <div class="field">
+            <input type="email" id="email" name="email" placeholder="Email" aria-label="Email" autocomplete="email" required>
+          </div>
+
+          <div class="field">
+            <input type="password" id="password" name="password" placeholder="Password" aria-label="Password" autocomplete="new-password" required>
+          </div>
+
+          <div class="field">
+            <input type="password" id="confirm-password" name="confirm-password" placeholder="Re-Type Password" aria-label="Re-Type Password" autocomplete="new-password" required>
+          </div>
+
+          <div class="field">
+            <input type="text" id="username" name="username" placeholder="Username" aria-label="Username" autocomplete="username" required>
+          </div>
+
+          <div class="field">
+            <input type="text" id="display-name" name="display-name" placeholder="Display Name" aria-label="Display Name" autocomplete="nickname" required>
+          </div>
+
+          <p class="form-error" role="alert" hidden>Something went wrong. Please check your details.</p>
+
+          <button type="submit" class="button create-account">Create an account</button>
+        </form>
+
+        <p class="forgot-password">Already have an account? <a href="login.html">Log in</a></p>
+      </section>
+    </main>
+
+    <section class="blurb">
+      <h2>All your games. One place.</h2>
+      <p>
+        Keep track of the games you own, the ones you're playing,
+        the ones you've beaten, and the ones still on your wishlist.
+        Your entire gaming backlog, organized in one convenient place.
+      </p>
+    </section>
+
+    <div class="game-art" aria-hidden="true"></div>
+
+  </div>
+
+</body>
+</html>
