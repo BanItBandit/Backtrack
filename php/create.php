@@ -8,8 +8,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Oxanium:wght@500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/login.css">
-  <script src="js/login.js" defer></script>
+  <link rel="stylesheet" href="../css/login.css">
+  <script src="../js/login.js" defer></script>
 </head>
 <body>
 
@@ -50,7 +50,7 @@
           <button type="submit" class="button create-account">Create an account</button>
         </form>
 
-        <p class="forgot-password">Already have an account? <a href="login.html">Log in</a></p>
+        <p class="forgot-password">Already have an account? <a href="login.php">Log in</a></p>
       </section>
     </main>
 

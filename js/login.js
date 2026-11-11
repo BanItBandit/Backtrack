@@ -21,7 +21,7 @@ for (let c = 0; c < 4; c++) {
       tile.className = "tile";
 
       const img = document.createElement("img");
-      img.src = "images/covers/" + covers[(i + c * 5) % covers.length];
+      img.src = "../images/covers/" + covers[(i + c * 5) % covers.length];
 
       tile.append(img);
       track.append(tile);

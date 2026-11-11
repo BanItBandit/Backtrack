@@ -6,3 +6,6 @@ Thumbs.db
 
 # macOS
 .DS_Store
+
+# Local database credentials (each person has their own)
+php/includes/config.php
