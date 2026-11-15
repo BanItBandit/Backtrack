@@ -1,0 +1,164 @@
+/* ---------- 1. Variables ---------- */
+:root {
+  --bg: #171A21;
+  --surface: #292E39;
+  --text: #F3F4F6;
+  --violet: #7357E8;
+  --sky: #38BDF8;
+  --accent: #FF9A01;
+
+  --font-body: "Inter", sans-serif;
+  --font-heading: "Space Grotesk", sans-serif;
+  --font-brand: "Oxanium", sans-serif;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+}
+
+header.top-nav {
+  background: var(--bg);
+}
+.wordmark {
+  font-family: var(--font-brand);
+  font-size: 2.5rem;
+  font-style: italic;
+  color:#F3F4F6;
+}
+
+.top-nav a {
+  text-decoration: none;
+  color: white;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+}
+
+.top-nav a.active {
+  color: #2ea8ff;
+}
+
+.library-page {
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.top-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: var(--surface);
+}
+
+.top-nav nav {
+  display: flex;
+  gap: 3rem;
+}
+
+.library-content {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+}
+/* come back to this spot */
+.currently-playing {
+  padding: 1.27rem;
+  background-color:#23293a;
+}
+
+.sidebar {
+  width: 280px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.stats-card,
+.filters-card {
+  background: #23293a;
+  padding: 1rem;
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+}
+
+/* PIECHART placeholder visual, not functional with user DB yet */
+.pie-chart-placeholder {
+  width : 180px;
+  height: 180px;
+  border-radius: 50%;
+  background:
+    conic-gradient(
+      #4bb4e6 0deg 220deg,
+      #7157e8 220deg 320deg,
+      #ff9a01 320deg 360deg
+    );
+
+  margin: 0 auto;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.filter-group label {
+display: block;
+}
+
+.library-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+/*  ADD CURRENTLY PLAYING CSS HERE FOR ORGANIZATION */
+.horizontal-games {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.5rem 0;
+  scrollbar-width: thin; /* For Firefox */
+}
+
+.game-banner {
+  flex: 0 0 180px;
+  height: 180px;
+  background: #3b4867;
+  /* I like the visual difference of the "games being played" cards and the library cards, since they are inside of a container, we can change it though. */
+  border-radius: 0.5rem;
+}
+
+/* TOOLBAR */
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  background: #23293a;
+  padding: 1rem;
+}
+
+.sort-dropdown {
+  background: #23293a;
+  border: 1px solid #3b4867;
+  color: #F3F4F6;
+  padding: 0.5rem;
+}
+
+/* GAME GRID */
+.game-grid {
+  display: grid;
+  grid-template-columns:
+      repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1rem;
+}
+
+.game-card {
+flex: 0 0 180px;
+height: 180px;
+background: #3b4867;
+}
