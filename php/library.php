@@ -32,8 +32,8 @@
 
         <nav>
             <a href="#" class="active">My Library</a>
-            <a href="#">Wishlist</a>
-            <a href="#">Browse</a>
+            <a href="wishlist.php">Wishlist</a>
+            <a href="browse.php">Browse</a>
             <a href="#">Game Picker</a>
             <a href="#">Settings</a>
         </nav>
@@ -55,7 +55,8 @@
 
             <section class="filters-card">
 
-                <h2>Filters</h2>
+                <!-- <h2>Filters</h2> -->
+                 <!-- removed as they are somewhat redundant. This also allows to center the actual filter titles and not feel off -->
 
                 <div class="filter-group">
                     <h3>Status</h3>
@@ -64,6 +65,8 @@
                     <label><input type="checkbox"> Playing</label>
                     <label><input type="checkbox"> On Hold</label>
                     <label><input type="checkbox"> Completed</label>
+                    <label><input type="checkbox"> DNF</label>
+
                 </div>
 
                 <div class="filter-group">
@@ -73,6 +76,8 @@
                     <label><input type="checkbox"> Nintendo Switch</label>
                     <label><input type="checkbox"> PlayStation</label>
                     <label><input type="checkbox"> Xbox</label>
+                    <label><input type="checkbox"> Mobile</label>
+                    <label><input type="checkbox"> Emulator</label>
                 </div>
 
             </section>
@@ -109,12 +114,15 @@
 
                 <select class="sort-dropdown">
                     <option>Alphabetical</option>
+                    <option>Release Date</option>
+                    <option>Completion Status</option>
+                    
                 </select>
 
             </section>
 
             <section class="game-grid">
-
+<!-- added a bunch of game cards to test the scroll feature of the game grid, not running yet, JS or CSS? -->
                 <div class="game-card"></div>
                 <div class="game-card"></div>
                 <div class="game-card"></div>
@@ -130,13 +138,72 @@
                 <div class="game-card"></div>
                 <div class="game-card"></div>
                 <div class="game-card"></div>
-
+                <div class="game-card"></div>
+                <div class="game-card"></div>
+                <div class="game-card"></div>
+                <div class="game-card"></div>
+                <div class="game-card"></div>
+                <div class="game-card"></div>
+                <div class="game-card"></div>
+                <div class="game-card"></div>
+                <div class="game-card"></div>
+                <div class="game-card"></div>
+                <div class="game-card"></div>
+                <div class="game-card"></div>
+                <div class="game-card"></div>
+                <div class="game-card"></div>
+                <div class="game-card"></div>
+                <div class="game-card"></div>
+                <div class="game-card"></div>
+                <div class="game-card"></div>
+                <div class="game-card"></div>
+                <div class="game-card"></div>
+                <div class="game-card"></div>
+                <div class="game-card"></div>
+                <div class="game-card"></div>
+                <div class="game-card"></div>
+                <div class="game-card"></div>
+                <div class="game-card"></div>
+                <div class="game-card"></div>
+                <div class="game-card"></div>
+                <div class="game-card"></div>
+                <div class="game-card"></div>
+                <div class="game-card"></div>
+                <div class="game-card"></div>
+                <div class="game-card"></div>
+                <div class="game-card"></div>
+                <div class="game-card"></div>
+                <div class="game-card"></div>
+                <div class="game-card"></div>
+                <div class="game-card"></div>
+                <div class="game-card"></div>
+                <div class="game-card"></div>
+                <div class="game-card"></div>
+                <div class="game-card"></div>
+                <div class="game-card"></div>
+                <div class="game-card"></div>
+                <div class="game-card"></div>
+                <div class="game-card"></div>
+                <div class="game-card"></div>
+                <div class="game-card"></div>
+                <div class="game-card"></div>
+                <div class="game-card"></div>
+                <div class="game-card"></div>
+                <div class="game-card"></div>
+                <div class="game-card"></div>
+                <div class="game-card"></div>
+                <div class="game-card"></div>
+                <div class="game-card"></div>
+                <!-- for each game in the library, create a card with the game title, image, and a button to add it to the wishlist. Use PHP to loop through the library items and generate the HTML for each game card dynamically. -->
             </section>
 
         </section>
 
     </main>
 
+</div>
+<div class="footer">
+    <p>&copy; 2026 Backtrack. All rights reserved.</p>
 </div>
 </body>
 </html>
