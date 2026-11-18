@@ -1,8 +1,9 @@
-<!-- Author: Carrie Andersen
-  Date: 30oct2026
-  Description: My Library page for Backtrack web-app.
-  -->
-
+<?php
+require __DIR__ . '/includes/db.php';
+require __DIR__ . '/includes/auth.php';
+require_login();
+$activeNav = 'library';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,24 +22,8 @@
 </head>
 
 <body>
-
+<?php require __DIR__ . '/includes/header.php'; ?>
 <div class="library-page">
-
-    <header class="top-nav">
-
-        <div class="wordmark">
-            Backtrack
-        </div>
-
-        <nav>
-            <a href="#" class="active">My Library</a>
-            <a href="wishlist.php">Wishlist</a>
-            <a href="browse.php">Browse</a>
-            <a href="#">Game Picker</a>
-            <a href="#">Settings</a>
-        </nav>
-
-    </header>
 
     <main class="library-content">
 
