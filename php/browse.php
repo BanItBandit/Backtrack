@@ -1,9 +1,8 @@
-<!-- Author: Carrie Andersen
-  Date: 14Nov2026
-  Description: Browse Catalog page for Backtrack web-app.
-  -->
-
-
+<?php
+require __DIR__ . '/includes/db.php';
+require __DIR__ . '/includes/auth.php';
+$activeNav = 'browse';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,27 +18,13 @@
 
     <!-- css -->
     <link rel="stylesheet" href="../css/browse.css">
+    <link rel="stylesheet" href="../css/base.css">
 </head>
 
 <body>
+<?php require __DIR__ . '/includes/header.php'; ?>
 
 <div class="browse-page">
-
-    <header class="top-nav">
-
-        <div class="wordmark">
-            Backtrack
-        </div>
-
-        <nav>
-            <a href="library.php">My Library</a>
-            <a href="wishlist.php">Wishlist</a>
-            <a href="browse.php" class="active">Browse</a>
-            <a href="#">Game Picker</a>
-            <a href="#">Settings</a>
-        </nav>
-
-    </header>
 
     <main class="browse-content">
 

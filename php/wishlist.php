@@ -18,6 +18,7 @@ $activeNav = 'wishlist';
 
     <!-- css -->
     <link rel="stylesheet" href="../css/wishlist.css">
+    <link rel="stylesheet" href="../css/base.css">
 </head>
 
 <body>

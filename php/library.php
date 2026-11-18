@@ -19,6 +19,7 @@ $activeNav = 'library';
 
     <!-- css -->
     <link rel="stylesheet" href="../css/library.css">
+    <link rel="stylesheet" href="../css/base.css">
 </head>
 
 <body>

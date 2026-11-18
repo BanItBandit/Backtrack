@@ -13,7 +13,7 @@ $navAdmin = (bool) $navUser['is_admin'];
 
 $links = [
     'library'  => ['library.php',  'Library'],
-    'catalog'  => ['catalog.php',  'Catalog'],
+    'browse'  => ['browse.php',  'Browse'],
     'wishlist' => ['wishlist.php', 'Wishlist'],
     'picker'   => ['picker.php',   'Game Picker'],
 ];
