@@ -162,6 +162,9 @@ $activeNav = 'library';       // which nav link to highlight
 ## Team
 
 Alex Ingalls - Team Leader and Project Architect
+
 Carrie Andersen - Record Keeper
+
 Michael Onstad - Quality Control
+
 Ethan Sippy - Quality Control
