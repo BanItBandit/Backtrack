@@ -1,50 +1,10 @@
-/* ---------- 1. Variables ---------- */
-:root {
-  --bg: #171A21;
-  --surface: #292E39;
-  --text: #F3F4F6;
-  --violet: #7357E8;
-  --sky: #38BDF8;
-  --accent: #FF9A01;
-
-  --font-body: "Inter", sans-serif;
-  --font-heading: "Space Grotesk", sans-serif;
-  --font-brand: "Oxanium", sans-serif;
-}
+/* =========================================================
+   login.css  (login and create-account pages only)
+   Load AFTER base.css. Uses the variables defined there.
+   ========================================================= */
 
 
-/* ---------- 2. Reset and base styles ---------- */
-*, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-}
-
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: var(--font-body);
-}
-
-h1, h2 {
-  font-family: var(--font-heading);
-}
-
-button,
-input {
-  font: inherit;
-}
-
-a {
-  color: var(--sky);
-  text-decoration: none;
-}
-
-/* a:hover { */
-  /* text-decoration: underline; */
-/* } */
-
-
-/* ---------- 3. Page layout ---------- */
+/* ---------- 1. Page layout ---------- */
 .login-page {
   display: grid;
   grid-template-columns: minmax(300px, 520px) 1fr;
@@ -54,7 +14,7 @@ a {
 }
 
 
-/* ---------- 4. Left column: wordmark + login card ---------- */
+/* ---------- 2. Left column: wordmark + login card ---------- */
 .login-main {
   display: flex;
   flex-direction: column;
@@ -65,10 +25,9 @@ a {
   margin-left: 2rem;
 }
 
-.wordmark {
-  font-family: var(--font-brand);
+/* size is page-specific; the shared look lives in base.css */
+.login-main .wordmark {
   font-size: 3rem;
-  font-style: italic;
 }
 
 .login-card {
@@ -104,7 +63,7 @@ a {
 }
 
 
-/* ---------- 5. Form fields and buttons ---------- */
+/* ---------- 3. Form fields and buttons ---------- */
 .field input {
   width: 100%;
   background: var(--bg);
@@ -146,7 +105,7 @@ a {
 }
 
 
-/* ---------- 6. Right column: blurb ---------- */
+/* ---------- 4. Right column: blurb ---------- */
 .blurb {
   align-self: start;
   justify-self: center;
@@ -171,7 +130,7 @@ a {
 }
 
 
-/* ---------- 7. Game art (animated background) ---------- */
+/* ---------- 5. Game art (animated background) ---------- */
 .game-art {
   position: absolute;
   top: -10%;

@@ -1,3 +1,71 @@
+<?php
+require __DIR__ . '/includes/db.php';
+
+$error = '';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $email       = trim($_POST['email'] ?? '');
+    $password    = $_POST['password'] ?? '';
+    $confirm     = $_POST['confirm-password'] ?? '';
+    $username    = trim($_POST['username'] ?? '');
+    $displayName = trim($_POST['display-name'] ?? '');
+
+    if ($email === '' || $password === '' || $confirm === '' || $username === '') {
+        $error = 'Please fill in all required fields.';
+    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $error = 'Please enter a valid email address.';
+    } elseif ($password !== $confirm) {
+        $error = 'Passwords do not match.';
+    } elseif (strlen($password) < 8) {
+        $error = 'Password must be at least 8 characters.';
+    } elseif (!preg_match('/^[A-Za-z0-9_]{3,30}$/', $username)) {
+        $error = 'Username must be 3-30 characters: letters, numbers, and underscores.';
+    } elseif (strlen($displayName) > 50) {
+        $error = 'Display name must be 50 characters or fewer.';
+    }
+
+    if ($error === '') {
+        $stmt = $pdo->prepare('SELECT username, email FROM Users WHERE username = ? OR email = ?');
+        $stmt->execute([$username, $email]);
+        $existing = $stmt->fetch();
+
+        if ($existing) {
+            if (strcasecmp($existing['username'], $username) === 0) {
+                $error = 'That username is already taken.';
+            } else {
+                $error = 'An account with that email already exists.';
+            }
+        }
+    }
+
+    if ($error === '') {
+        $hash = password_hash($password, PASSWORD_DEFAULT);
+
+        try {
+            $stmt = $pdo->prepare(
+                'INSERT INTO Users (username, display_name, email, password_hash) VALUES (?, ?, ?, ?)'
+            );
+            $stmt->execute([
+                $username,
+                $displayName === '' ? null : $displayName,
+                $email,
+                $hash,
+            ]);
+        } catch (PDOException $e) {
+            if ($e->getCode() === '23000') {
+                $error = 'That username or email is already taken.';
+            } else {
+                throw $e;
+            }
+        }
+
+        if ($error === '') {
+            header('Location: login.php?registered=1');
+            exit;
+        }
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +76,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Oxanium:wght@500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/base.css">
   <link rel="stylesheet" href="../css/login.css">
   <script src="../js/login.js" defer></script>
 </head>
@@ -24,7 +93,7 @@
         <h1>Welcome!</h1>
         <p class="login-intro">Please enter account creation details</p>
 
-        <form class="login-form" action="#" method="post">
+        <form class="login-form" action="create.php" method="post">
           <div class="field">
             <input type="email" id="email" name="email" placeholder="Email" aria-label="Email" autocomplete="email" required>
           </div>
@@ -42,10 +111,12 @@
           </div>
 
           <div class="field">
-            <input type="text" id="display-name" name="display-name" placeholder="Display Name" aria-label="Display Name" autocomplete="nickname" required>
+            <input type="text" id="display-name" name="display-name" placeholder="Display Name" aria-label="Display Name" autocomplete="nickname">
           </div>
 
-          <p class="form-error" role="alert" hidden>Something went wrong. Please check your details.</p>
+          <?php if ($error !== ''): ?>
+            <p class="form-error" role="alert"><?= htmlspecialchars($error) ?></p>
+          <?php endif; ?>
 
           <button type="submit" class="button create-account">Create an account</button>
         </form>

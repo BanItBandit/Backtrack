@@ -13,3 +13,4 @@ $user = $stmt->fetch();
 
 echo "Logged in as: " . htmlspecialchars($user['username']);
 echo "User Display Name: " . htmlspecialchars($user['display_name']);
+?>
