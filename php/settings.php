@@ -21,5 +21,12 @@ $user = $stmt->fetch();
   <?php
     echo "Hello, " . $user['username'] . "! Welcome to your settings page.";
   ?>
+
+  <div>
+    <p>Would you like to log out?</p>
+    <form action="logout.php" method="post">
+      <button type="submit">Log Out</button>
+    </form>
+  </div>
 </body>
 </html>
