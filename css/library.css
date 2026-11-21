@@ -1,95 +1,43 @@
-/* ---------- 1. Variables ---------- */
-:root {
-  --bg: #171A21;
-  --surface: #292E39;
-  --text: #F3F4F6;
-  --violet: #7357E8;
-  --sky: #38BDF8;
-  --accent: #FF9A01;
+/* =========================================================
+   Library page
+   ========================================================= */
 
-  --font-body: "Inter", sans-serif;
-  --font-heading: "Space Grotesk", sans-serif;
-  --font-brand: "Oxanium", sans-serif;
-}
 
-body {
-  margin: 0;
-  font-family: var(--font-body);
-  background: var(--bg);
-  color: var(--text);
-}
-
-button, input {
-  font: inherit;
-}
-
-header.top-nav {
-  background: var(--bg);
-}
-.wordmark {
-  font-family: var(--font-brand);
-  font-size: 2.5rem;
-  font-style: italic;
-  color:#F3F4F6;
-}
-
-.top-nav a {
-  text-decoration: none;
-  color: white;
-  font-family: 'Inter', sans-serif;
-  font-weight: 500;
-}
-
-.top-nav a.active {
-  color: #2ea8ff;
-}
-
+/* ---------- 1. Page layout ---------- */
 .library-page {
-  border: 2px solid red; /* TEMPORARY FOR DEBUGGING */
   min-height: 100vh;
-  background: var(--bg);
-  color: var(--text);
-}
-
-.top-nav {
-  /* font not wanting to change to body-font */
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem;
-  background: var(--surface);
-}
-
-.top-nav nav {
-  /* font-family: var(--font-body); */
-  display: flex;
-  gap: 3rem;
 }
 
 .library-content {
-  border: 1px solid blue; /* TEMPORARY FOR DEBUGGING */
   display: flex;
   gap: 1rem;
   padding: 1rem;
+  padding-top: 0;
 }
 
-.sidebar {
-  width: 280px;
+.library-form {
+  display: contents;
+}
+
+.library-main {
+  flex: 1;
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
 
-.stats-card h2 {
-  font-family: var(--font-heading);
-  font-size: 1.2rem;
-  text-align: center;
-}
 
-.filters-card h2 {
-  font-family: var(--font-body);
-  font-size: 1.2rem;
-  text-align: center;
+/* ---------- 2. Sidebar ---------- */
+.sidebar {
+  width: 280px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  position: sticky;
+  top: var(--header-height);
+  z-index: 10;
+  align-self: flex-start;
 }
 
 .stats-card,
@@ -100,19 +48,93 @@ header.top-nav {
   font-size: 1.2rem;
 }
 
-/* PIECHART placeholder visual, not functional with user DB yet */
-.pie-chart-placeholder {
-  width : 180px;
-  height: 180px;
-  border-radius: 50%;
-  background:
-    conic-gradient(
-      #4bb4e6 0deg 220deg,
-      #7157e8 220deg 320deg,
-      #ff9a01 320deg 360deg
-    );
 
+/* ---------- 3. Stats card ---------- */
+.stats-card {
+  aspect-ratio: 1 / 0.85;
+}
+
+.stats-card h2 {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  text-align: justify;
+  padding-bottom: 0.25rem;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 0.25rem;
+  margin-top: 0.6rem;
+}
+
+.stats-list-container {
+  align-self: center;
+  transform: translate(0, 30px);
+  margin-right: -15px;
+}
+
+.stats-list {
+  grid-column: span 1;
+  list-style: none;
+  padding: 0;
+  font-size: 0.9rem;
+  font-weight: 400;
+}
+
+.stats-list li {
+  padding-bottom: 0.25rem;
+}
+
+.stats-list .dot {
+  display: inline-block;
+  width: 0.75rem;
+  height: 0.75rem;
+  margin-right: 0.5rem;
+  border-radius: 50%;
+}
+
+.stats-total {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.stats-divider {
+  height: 1px;
+  margin: 8px 0;
+  border: none;
+  background-color: #626b7c;
+  opacity: 0.5;
+}
+
+.pie {
+  width: 140px;
+  grid-column: span 1;
+  align-self: center;
   margin: 0 auto;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  -webkit-mask: radial-gradient(circle closest-side, transparent 58%, #000 59%);
+  mask: radial-gradient(circle closest-side, transparent 58%, #000 59%);
+}
+
+
+/* ---------- 4. Filters card ---------- */
+.filters-card {
+  height: 470px;
+}
+
+.filters-scroll {
+  height: 100%;
+  overflow-y: auto;
+  padding-right: 0.5rem;   /* gap between the content and the scrollbar */
+  scrollbar-width: thin;
+  scrollbar-color: var(--violet) transparent;
+}
+
+.filters-card a {
+  font-size: 0.9rem;
+  font-weight: 400;
 }
 
 .filter-group {
@@ -121,30 +143,60 @@ header.top-nav {
   gap: 0.25rem;
 }
 
-.filter-group h3 {
+.filter-group h2 {
   font-family: var(--font-heading);
-  font-size: 2rem;
-  margin: 0.5rem 0;
-  text-align: center;
+  font-size: 1.2rem;
+  text-align: justify;
+}
+
+.filter-group label {
+  padding: 0;
+  font-size: 0.9rem;
+  font-weight: 400;
 }
 
 .filter-group label {
   display: block;
 }
 
-.library-main {
-  /* border: 1px solid green; TEMPORARY FOR DEBUGGING */
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+.filter-group label input {
+  margin-right: 0.5rem;
 }
 
+#platform {
+  margin-top: 1rem;
+}
+
+#tags {
+  margin-top: 1rem;
+}
+
+.filter-hint {
+  margin-bottom: 0.5rem;
+  font-size: 0.75rem;
+  opacity: 0.7;
+}
+
+.tag-category summary {
+  padding: 0.25rem 0;
+  cursor: pointer;
+}
+
+.tag-category {
+  padding: 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.tag-category label {
+  padding-bottom: 0.25rem;
+}
+
+/* ---------- 5. Currently playing ---------- */
 .currently-playing {
-  font-family: var(--font-heading);
-  border: 1px solid yellow; /* TEMP. FOR DEBUGGING */
   padding: 1.27rem;
-  background-color:#23293a;
+  background-color: #23293a;
+  font-family: var(--font-heading);
 }
 
 .horizontal-games {
@@ -152,69 +204,273 @@ header.top-nav {
   gap: 1rem;
   overflow-x: auto;
   overflow-y: hidden;
-  padding: 0.5rem 0;
-  scrollbar-width: thin; /* For Firefox */
+  padding: 0.5rem 0 1rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--violet) transparent;
 }
 
 .game-banner {
   flex: 0 0 180px;
   height: 180px;
   background: #3b4867;
-  /* I like the visual difference of the "games being played" cards and the library cards, since they are inside of a container, we can change it though. */
   border-radius: 0.5rem;
 }
 
-/* TOOLBAR */
+.game-banner img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  border-radius: 0.5rem;
+}
+
+
+/* ---------- 6. Toolbar ---------- */
 .toolbar {
+  position: sticky;
+  top: var(--header-height);
+  z-index: 10;
   display: flex;
   justify-content: space-between;
-  background: #23293a;
+  gap: 1.5rem;
   padding: 1rem;
-  border: 1px solid green;
+  background: #23293a;
+}
+
+.field input {
+  padding: 0.75rem 7rem 0.75rem 1rem;
+  text-align: left;
 }
 
 .sort-dropdown {
+  margin-left: auto;
+  padding: 0.5rem;
+}
+
+.sort-by-button {
+  width: 2.5rem;
+  height: 2.5rem;
+  align-self: center;
+  margin-left: -0.75rem;
+  padding: 0.5rem;
   background: #23293a;
   border: 1px solid #3b4867;
-  color: #F3F4F6;
-  padding: 0.5rem;
+  color: var(--text);
 }
 
-/* GAME GRID */
-/* .game-grid {
-  border: solid rgb(235, 70, 213) 1px;
-  display: grid;
-  grid-template-columns:
-      repeat(auto-fill, minmax(180px, 1fr));
-  gap: 1rem;
+.back-to-top-button {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 100;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 50%;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 16px;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
 }
 
-.game-card {
-flex: 0 0 180px;
-height: 180px;
-background: #3b4867;
-} */
+.back-to-top-button.show {
+  opacity: 1;
+  visibility: visible;
+}
 
+
+/* ---------- 7. Game grid ---------- */
 .game-grid {
-  border: solid rgb(235, 70, 213) 1px;
-
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-
+  grid-template-columns: repeat(6, minmax(0, 1fr));
   gap: 1rem;
+  padding-bottom: 1rem;
 }
 
 .game-card {
-  background: #3b4867;
-
-  aspect-ratio: 1 / 1;
   width: 100%;
+  aspect-ratio: 1 / 1;
+  background: #3b4867;
 }
 
-/* FOOTER */
-.footer {
+.game-card img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.game-card,
+.game-banner {
+  cursor: pointer;
+}
+
+.game-grid > p {
+  grid-column: 1 / -1;
+}
+
+
+/* ---------- 8. Game dialog ---------- */
+.game-dialog {
+  position: fixed;
+  inset: 0;
+  width: min(90%, 640px);
+  max-height: calc(100vh - 2rem);
+  margin: auto;
+  padding: 1.5rem;
+  overflow-y: auto;
+  background: var(--surface);
+  color: var(--text);
+  border: none;
+  border-radius: 0.5rem;
+}
+
+.game-dialog[open] {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 1.5rem;
+}
+
+.game-dialog::backdrop {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.dialog-cover {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 0.5rem;
+}
+
+.dialog-close {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.75rem;
+  background: none;
+  border: none;
+  color: var(--text);
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.dialog-close:focus { outline: none; }
+
+.dialog-meta {
+  margin: 0.25rem 0 1rem;
+  color: var(--sky);
+  font-size: 0.9rem;
+}
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1rem 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tag-list li {
+  padding: 0.25rem 0.75rem;
+  background: var(--bg);
+  border-radius: 1rem;
+  font-size: 0.8rem;
+}
+
+
+/* ---------- 9. Status control ---------- */
+.status-control {
+  position: relative;
+  display: flex;
+  gap: 0.25rem;
+  padding: 0.25rem;
+  background: var(--bg);
+  border-radius: 0.5rem;
+}
+
+.status-control::before {
+  content: '';
+  position: absolute;
+  top: 0.25rem;
+  bottom: 0.25rem;
+  left: 0.25rem;
+  width: calc((100% - 1.25rem) / 4);
+  background: var(--violet);
+  border-radius: 0.4rem;
+  transition: transform 0.25s ease;
+}
+
+.status-control:has(label:nth-child(2) input:checked)::before {
+  transform: translateX(calc(100% + 0.25rem));
+}
+
+.status-control:has(label:nth-child(3) input:checked)::before {
+  transform: translateX(calc(200% + 0.5rem));
+}
+
+.status-control:has(label:nth-child(4) input:checked)::before {
+  transform: translateX(calc(300% + 0.75rem));
+}
+
+.status-control label {
+  flex: 1;
+  position: relative;
+}
+
+.status-control input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.status-control span {
+  position: relative;
+  z-index: 1;
+  display: block;
+  padding: 0.5rem 0.25rem;
+  border-radius: 0.4rem;
   text-align: center;
-  padding: 0.5rem;
-  background: #23293a;
-  color: #F3F4F6;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.status-control input:focus-visible + span {
+  outline: 2px solid var(--sky);
+}
+
+
+/* ---------- 10. Remove button ---------- */
+.remove-button {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background: none;
+  border: 1px solid var(--danger);
+  border-radius: 0.4rem;
+  color: var(--danger);
+  cursor: pointer;
+}
+
+.remove-button:hover {
+  background: var(--danger);
+  color: var(--text);
+}
+
+
+/* ---------- 11. Responsive ---------- */
+@media (max-width: 600px) {
+  .game-dialog[open] {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .status-control::before {
+    transition: none;
+  }
+
+  .back-to-top-button {
+    transition: none;
+  }
 }

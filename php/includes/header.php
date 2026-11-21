@@ -19,7 +19,7 @@ $links = [
 ];
 ?>
 <header class="site-header">
-  <a class="wordmark" href="library.php">Backtrack</a>
+  <p class="wordmark">Backtrack</p>
 
   <nav class="site-header-nav" aria-label="Main">
     <?php foreach ($links as $key => [$href, $label]): ?>

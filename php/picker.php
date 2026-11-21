@@ -12,6 +12,7 @@ $activeNav = 'picker';
 </head>
 <body>
   <?php require __DIR__ . '/includes/header.php'; ?>
+  
   <h1>Pick For Me</h1>
   
 </body>

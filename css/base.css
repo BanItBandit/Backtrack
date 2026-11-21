@@ -12,10 +12,13 @@
   --violet: #7357E8;
   --sky: #38BDF8;
   --accent: #FF9A01;
+  --danger: #E5484D;
+  --muted: #5B6475;
 
   --font-body: "Inter", sans-serif;
   --font-heading: "Space Grotesk", sans-serif;
   --font-brand: "Oxanium", sans-serif;
+  --header-height: 4rem;
 }
 
 
@@ -45,6 +48,64 @@ a {
   text-decoration: none;
 }
 
+.field input {
+  background: var(--bg);
+  border: none;           /* CHECK: inputs have square corners, buttons have 4px. Intentional? */
+  color: var(--text);
+  padding: 0.75rem 2.5rem;
+}
+
+select {
+  background: var(--bg);
+  border: none;           /* CHECK: inputs have square corners, buttons have 4px. Intentional? */
+  color: var(--text);
+}
+
+/* ---------- Checkboxes (site-wide) ---------- */
+input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  flex-shrink: 0;
+  width: 1.1rem;
+  height: 1.1rem;
+  margin: 0;
+  vertical-align: middle;
+  background-color: var(--bg);
+  border: 1px solid var(--muted);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+input[type="checkbox"]:hover {
+  border-color: var(--sky);
+}
+
+input[type="checkbox"]:checked {
+  background-color: var(--violet);
+  border-color: var(--violet);
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath d='M3.5 8.5l3 3 6-7' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 80%;
+}
+
+input[type="checkbox"]:focus-visible {
+  outline: 2px solid var(--sky);
+  outline-offset: 2px;
+}
+
+input[type="checkbox"]:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  input[type="checkbox"] {
+    transition: none;
+  }
+}
+
 /* a:hover { */
   /* text-decoration: underline; */
 /* } */
@@ -61,10 +122,15 @@ a {
 
 /* ---------- 4. Header ---------- */
 .site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: var(--header-height);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem 2rem;
+  padding: 0 2rem;
+  background: var(--bg);
 }
 
 .site-header .wordmark {

@@ -66,9 +66,6 @@
 /* ---------- 3. Form fields and buttons ---------- */
 .field input {
   width: 100%;
-  background: var(--bg);
-  border: none;           /* CHECK: inputs have square corners, buttons have 4px. Intentional? */
-  color: var(--text);
   margin-bottom: 1rem;
 }
 

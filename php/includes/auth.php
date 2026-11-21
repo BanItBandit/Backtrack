@@ -28,3 +28,47 @@ function require_admin(PDO $pdo): void
         exit('You do not have access to this page.');
     }
 }
+
+// ---- JSON endpoint helpers -------------------------------------------
+
+function json_error(int $code, string $message): void
+{
+    http_response_code($code);
+    header('Content-Type: application/json');
+    exit(json_encode(['error' => $message]));
+}
+
+function csrf_token(): string
+{
+    if (empty($_SESSION['csrf_token'])) {
+        $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+    }
+    return $_SESSION['csrf_token'];
+}
+
+function require_csrf(): void
+{
+    $sent = $_POST['csrf_token'] ?? '';
+    if (!hash_equals(csrf_token(), $sent)) {
+        json_error(403, 'Invalid request token');
+    }
+}
+
+// For endpoints that only read data (GET).
+function require_api_login(): void
+{
+    header('Content-Type: application/json');
+    if (empty($_SESSION['user_id'])) {
+        json_error(401, 'Not logged in');
+    }
+}
+
+// For endpoints that change data: logged in, POST only, valid CSRF token.
+function require_api_post(): void
+{
+    require_api_login();
+    if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+        json_error(405, 'POST required');
+    }
+    require_csrf();
+}

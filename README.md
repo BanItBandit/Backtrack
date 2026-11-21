@@ -150,8 +150,8 @@ $activeNav = 'library';       // which nav link to highlight
 - [x] Registration, login, and logout
 - [x] Shared header and base styles
 - [x] Hosting and database connection
-- [ ] Route guards (`require_login()` / `require_admin()`)
-- [ ] My Library
+- [x] Route guards (`require_login()` / `require_admin()`)
+- [x] My Library
 - [ ] Catalog
 - [ ] Wishlist
 - [ ] Game Picker
