@@ -265,6 +265,7 @@ $pie = $total > 0
 
 <button type="button" id="back-to-top" class="back-to-top-button" aria-label="Back to top">↑</button>
 
+<script src="../js/game-dialog.js"></script>
 <script src="../js/library.js"></script>
 </body>
 </html>
